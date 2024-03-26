@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Chat from './components/Chat/Chat';
 import {Messages} from "./types";
 
 const App: React.FC = () => {
@@ -9,9 +9,9 @@ const App: React.FC = () => {
     useEffect(() => {
         const fetchMessages = async () => {
             try {
-                const url = `http://localhost:8000/messages`;
+                const urlMain = `http://localhost:8000/messages`;
 
-                const response = await fetch(url);
+                const response = await fetch(urlMain);
                 const data = await response.json();
                 setMessages(data)
             } catch (error) {
@@ -45,9 +45,10 @@ const App: React.FC = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-           
+            <Chat messages={messages} onSubmit={submit} />
         </div>
     );
 };
+
 
 export default App;
