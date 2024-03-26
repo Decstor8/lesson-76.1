@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-// import messagesRouter from "./routes/messages";
+import messagesRouter from "./routes/messages";
 const express = require('express');
 const cors = require('cors');
 
@@ -8,7 +8,7 @@ const port = 8000;
 
 app.use(cors())
 app.use(express.json());
-
+app.use('/messages', messagesRouter);
 
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
